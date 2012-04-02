@@ -61,10 +61,6 @@ void read_map(std::istream & is, const map_location & bounds, std::vector<map_re
 	}
 	unsigned int position = 0;
 	unsigned int size	  = bounds.x * bounds.y *bounds.z;
-	map_location loc;
-	loc.x = 1;
-	loc.y = 1;
-	loc.z = 1;
 	while (position < size) {
 		map_reference ref;
 		is >> ref;
