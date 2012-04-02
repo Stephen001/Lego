@@ -10,9 +10,10 @@
 #include "file_util.hpp"
 #include <sstream>
 #include <string>
+#include <iostream>
 
 unsigned short read_three_digits_as_string(std::istream & is) {
-	char number[3] = {};
+	char number[3] = {0, 0, 0};
 	is.read(number, 3);
 	std::stringstream ss(std::string(number), std::ios_base::in);
 	unsigned short result;
@@ -25,8 +26,8 @@ namespace lego
 
 std::istream & operator>>(std::istream & is, lego::map_location & data) {
 	data.x = get_type<unsigned short>(is);
-	data.y = get_type<unsigned short>(is);;
-	data.z = get_type<unsigned short>(is);;
+	data.y = get_type<unsigned short>(is);
+	data.z = get_type<unsigned short>(is);
 	return is;
 };
 
