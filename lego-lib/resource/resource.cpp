@@ -5,7 +5,7 @@
  *      Author: stephen001
  */
 
-#include <resource/resource.hpp>
+#include <lego/resource/resource.hpp>
 #include "../file_util.hpp"
 #include <algorithm>
 #include <iostream>

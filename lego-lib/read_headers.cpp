@@ -5,8 +5,8 @@
  *      Author: stephen001
  */
 
-#include <map.hpp>
-#include <version.hpp>
+#include <lego/map.hpp>
+#include <lego/version.hpp>
 #include "file_util.hpp"
 #include <sstream>
 #include <string>

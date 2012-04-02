@@ -5,7 +5,7 @@
  *      Author: stephen001
  */
 
-#include <binary_chunk.hpp>
+#include <lego/binary_chunk.hpp>
 #include <cstring>
 #include "file_util.hpp"
 

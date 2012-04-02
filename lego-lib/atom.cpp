@@ -5,7 +5,7 @@
  *      Author: stephen001
  */
 
-#include <atom.hpp>
+#include <lego/atom.hpp>
 #include "file_util.hpp"
 
 #define LEGO_ATOM_USE_NEW_SPECIAL 0x0F

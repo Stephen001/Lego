@@ -31,7 +31,7 @@
 								<option id="gnu.cpp.compiler.so.debug.option.optimization.level.1608615712" name="Optimization Level" superClass="gnu.cpp.compiler.so.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.so.debug.option.debugging.level.325759983" name="Debug Level" superClass="gnu.cpp.compiler.so.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.388044868" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lego/includes}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lego-lib/includes}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.403621947" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -fPIC -std=c++0x" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.debugging.prof.526810333" name="Generate prof information (-p)" superClass="gnu.cpp.compiler.option.debugging.prof" value="false" valueType="boolean"/>

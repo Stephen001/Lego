@@ -5,7 +5,7 @@
  *      Author: stephen001
  */
 
-#include <mob.hpp>
+#include <lego/mob.hpp>
 #include "file_util.hpp"
 
 #define LEGO_MOB_EXTENDED_SIGHT_RULES 0x80
