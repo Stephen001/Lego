@@ -47,4 +47,36 @@ void read_atom_references(std::istream & is, std::vector<atom_reference> & cache
 	}
 };
 
+void create_atom_definitions(std::vector<atom_reference> & references, std::vector<std::string> & strings, std::vector<atom_definition> & cache) {
+	for (std::vector<atom_reference>::iterator it = references.begin(); it != references.end(); it++) {
+		atom_reference & ref = *it;
+		std::string & type = strings[ref.type_name_id];
+		atom_definition def(type);
+		cache.push_back(def);
+	}
+}
+
+void resolve_atom_parents(std::vector<atom_reference> & references, std::vector<atom_definition> & cache) {
+	for (unsigned int i = 0; i < references.size(); i++) {
+		atom_reference & ref = references[i];
+		atom_definition & me = cache[i];
+		if (ref.parent_type_id < 65535) {
+			atom_definition & parent = cache[ref.parent_type_id];
+			me.set_parent(&parent);
+		}
+	}
+}
+
+atom_definition::atom_definition(std::string & type_name) : __type_name(type_name) {}
+
+std::string * atom_definition::name() { return __name; }
+
+atom_definition * atom_definition::parent() { return __parent; }
+
+std::string & atom_definition::type_name() { return __type_name; }
+
+void atom_definition::set_name(std::string * name) { this->__name = name; }
+
+void atom_definition::set_parent(atom_definition * parent) { this->__parent = parent; }
+
 };

@@ -9,6 +9,7 @@
 #define LEGO_ATOM_HPP_
 
 #include <istream>
+#include <string>
 #include <vector>
 
 #define LEGO_ATOM_NONE
@@ -39,7 +40,28 @@ struct atom_reference
 	friend std::istream & operator>>(std::istream & is, atom_reference & ref);
 };
 
+class atom_definition
+{
+public:
+	atom_definition(std::string & type_name);
+	virtual ~atom_definition() {};
+	std::string 	* 	name();
+	atom_definition * 	parent();
+	std::string &		type_name();
+	void				set_name(std::string * name);
+	void 				set_parent(atom_definition * parent);
+
+private:
+	std::string 	*	__name;
+	atom_definition * 	__parent;
+	std::string			__type_name;
+};
+
 void read_atom_references(std::istream & is, std::vector<atom_reference> & cache);
+
+void create_atom_definitions(std::vector<atom_reference> & references, std::vector<std::string> & strings, std::vector<atom_definition> & cache);
+
+void resolve_atom_parents(std::vector<atom_reference> & references, std::vector<atom_definition> & cache);
 
 };
 
