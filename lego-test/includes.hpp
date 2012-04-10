@@ -10,5 +10,7 @@
 
 void print_info(char * name);
 
+void print_graph(char * name);
+
 
 #endif /* INCLUDES_HPP_ */

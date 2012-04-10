@@ -14,5 +14,8 @@ int main(int argc, char ** argv) {
 	if (command.compare("print-info") == 0) {
 		print_info(argv[2]);
 	}
+	if (command.compare("print-graph") == 0) {
+			print_graph(argv[2]);
+		}
 	return 0;
 }
