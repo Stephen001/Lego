@@ -45,9 +45,10 @@ class atom_definition
 public:
 	atom_definition(std::string & type_name);
 	virtual ~atom_definition() {};
-	std::string 	* 	name();
+	std::string *		name();
 	atom_definition * 	parent();
 	std::string &		type_name();
+	std::string &		type_path();
 	void				set_name(std::string * name);
 	void 				set_parent(atom_definition * parent);
 
@@ -55,6 +56,7 @@ private:
 	std::string 	*	__name;
 	atom_definition * 	__parent;
 	std::string			__type_name;
+	std::string			__type_path;
 };
 
 void read_atom_references(std::istream & is, std::vector<atom_reference> & cache);

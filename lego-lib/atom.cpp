@@ -52,6 +52,10 @@ void create_atom_definitions(std::vector<atom_reference> & references, std::vect
 		atom_reference & ref = *it;
 		std::string & type = strings[ref.type_name_id];
 		atom_definition def(type);
+		if (ref.name_id < 65535) {
+			std::string & name = strings[ref.name_id];
+			def.set_name(&name);
+		}
 		cache.push_back(def);
 	}
 }
@@ -67,13 +71,26 @@ void resolve_atom_parents(std::vector<atom_reference> & references, std::vector<
 	}
 }
 
-atom_definition::atom_definition(std::string & type_name) : __type_name(type_name) {}
+atom_definition::atom_definition(std::string & type_path) : __type_path(type_path) {
+	__name 				  = NULL;
+	__parent 			  = NULL;
+	size_t position = __type_path.find_last_of('/');
+	if (position == std::string::npos) {
+		__type_name = __type_path;
+	} else {
+		__type_name = __type_path.substr(position + 1);
+	}
+}
 
-std::string * atom_definition::name() { return __name; }
+std::string * atom_definition::name() {
+	return __name;
+}
 
 atom_definition * atom_definition::parent() { return __parent; }
 
 std::string & atom_definition::type_name() { return __type_name; }
+
+std::string & atom_definition::type_path() { return __type_path; }
 
 void atom_definition::set_name(std::string * name) { this->__name = name; }
 
