@@ -7,6 +7,7 @@
 
 #include <lego/atom.hpp>
 #include "file_util.hpp"
+#include <functional>
 
 #define LEGO_ATOM_USE_NEW_SPECIAL 0x0F
 
@@ -56,6 +57,10 @@ void create_atom_definitions(std::vector<atom_reference> & references, std::vect
 			std::string & name = strings[ref.name_id];
 			def.set_name(&name);
 		}
+		if (ref.description_id < 65535) {
+			std::string & desc = strings[ref.description_id];
+			def.set_description(&desc);
+		}
 		cache.push_back(def);
 	}
 }
@@ -82,6 +87,10 @@ atom_definition::atom_definition(std::string & type_path) : __type_path(type_pat
 	}
 }
 
+std::string * atom_definition::description() {
+	return __description;
+}
+
 std::string * atom_definition::name() {
 	return __name;
 }
@@ -91,6 +100,8 @@ atom_definition * atom_definition::parent() { return __parent; }
 std::string & atom_definition::type_name() { return __type_name; }
 
 std::string & atom_definition::type_path() { return __type_path; }
+
+void atom_definition::set_description(std::string * desc) { this->__description = desc; }
 
 void atom_definition::set_name(std::string * name) { this->__name = name; }
 

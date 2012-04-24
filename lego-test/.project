@@ -3,7 +3,6 @@
 	<name>lego-test</name>
 	<comment></comment>
 	<projects>
-		<project>lego-lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

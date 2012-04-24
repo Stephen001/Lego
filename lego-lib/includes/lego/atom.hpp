@@ -45,15 +45,18 @@ class atom_definition
 public:
 	atom_definition(std::string & type_name);
 	virtual ~atom_definition() {};
+	std::string *       description();
 	std::string *		name();
 	atom_definition * 	parent();
 	std::string &		type_name();
 	std::string &		type_path();
+	void				set_description(std::string * desc);
 	void				set_name(std::string * name);
 	void 				set_parent(atom_definition * parent);
 
 private:
 	std::string 	*	__name;
+	std::string     *   __description;
 	atom_definition * 	__parent;
 	std::string			__type_name;
 	std::string			__type_path;
