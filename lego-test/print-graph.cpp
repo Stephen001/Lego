@@ -9,7 +9,7 @@
 #include <fstream>
 #include <vector>
 
-#include <lego/atom.hpp>
+#include <lego/datum.hpp>
 #include <lego/map.hpp>
 #include <lego/mob.hpp>
 #include <lego/string.hpp>
@@ -30,18 +30,18 @@ void print_graph(char * name) {
 		lego::read_map(stream, map_size, map_references);
 	}
 	lego::initial_string_cache string_cache(stream);
-	std::vector<lego::atom_reference> atom_references;
-	lego::read_atom_references(stream, atom_references);
+	std::vector<lego::datum_reference> datum_references;
+	lego::read_datum_references(stream, datum_references);
 	std::vector<lego::mob_reference> mob_references;
 	lego::read_mob_references(stream, mob_references);
 	stream >> string_cache;
-	std::vector<lego::atom_definition> definitions;
+	std::vector<lego::datum_definition> definitions;
 	std::vector<std::string> & strings = const_cast<std::vector<std::string> &>(string_cache.values());
-	lego::create_atom_definitions(atom_references, strings, definitions);
-	lego::resolve_atom_parents(atom_references, definitions);
+	lego::create_datum_definitions(datum_references, strings, definitions);
+	lego::resolve_datum_parents(datum_references, definitions);
 	std::cout << "digraph objtree {" << std::endl;
-	for (std::vector<lego::atom_definition>::iterator it = definitions.begin(); it != definitions.end(); it++) {
-		lego::atom_definition & def = *it;
+	for (std::vector<lego::datum_definition>::iterator it = definitions.begin(); it != definitions.end(); it++) {
+		lego::datum_definition & def = *it;
 		std::cout << "\t";
 		if (def.parent() != NULL) {
 			std::cout << def.parent()->type_name() << " -> ";

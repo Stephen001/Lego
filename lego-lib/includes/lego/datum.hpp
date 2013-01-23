@@ -1,12 +1,12 @@
 /*
- * atom.hpp
+ * datum.hpp
  *
  *  Created on: Aug 1, 2010
  *      Author: stephen001
  */
 
-#ifndef LEGO_ATOM_HPP_
-#define LEGO_ATOM_HPP_
+#ifndef LEGO_DATUM_HPP_
+#define LEGO_DATUM_HPP_
 
 #include <istream>
 #include <string>
@@ -14,7 +14,7 @@
 
 namespace lego {
 
-struct atom_reference
+struct datum_reference
 {
 	unsigned short type_name_id;
 	unsigned short parent_type_id;
@@ -35,40 +35,46 @@ struct atom_reference
 	float		   layer;
 	unsigned short preset_vars_id;
 
-	friend std::istream & operator>>(std::istream & is, atom_reference & ref);
+	friend std::istream & operator>>(std::istream & is, datum_reference & ref);
 };
 
-class atom_definition
+class datum_definition
 {
 public:
-	atom_definition(std::string & type_name);
-	virtual ~atom_definition() {};
+	datum_definition(std::string & type_name);
+	virtual ~datum_definition() {};
 	std::string *       description();
 	std::string *		name();
 	std::string *		icon_state();
-	atom_definition * 	parent();
+	datum_definition * 	parent();
+	std::string	*		suffix();
+	std::string	*		text_icon();
 	std::string &		type_name();
 	std::string &		type_path();
 	void				set_description(std::string * desc);
 	void				set_icon_state(std::string * state);
 	void				set_name(std::string * name);
-	void 				set_parent(atom_definition * parent);
+	void 				set_parent(datum_definition * parent);
+	void				set_text_icon(std::string * text_icon);
+	void				set_suffix(std::string * suffix);
 
 private:
 	std::string 	*	__name;
 	std::string     *   __description;
 	std::string		*	__icon_state;
-	atom_definition * 	__parent;
+	datum_definition * 	__parent;
+	std::string		*	__suffix;
+	std::string		*	__text_icon;
 	std::string			__type_name;
 	std::string			__type_path;
 };
 
-void read_atom_references(std::istream & is, std::vector<atom_reference> & cache);
+void read_datum_references(std::istream & is, std::vector<datum_reference> & cache);
 
-void create_atom_definitions(std::vector<atom_reference> & references, std::vector<std::string> & strings, std::vector<atom_definition> & cache);
+void create_datum_definitions(std::vector<datum_reference> & references, std::vector<std::string> & strings, std::vector<datum_definition> & cache);
 
-void resolve_atom_parents(std::vector<atom_reference> & references, std::vector<atom_definition> & cache);
+void resolve_datum_parents(std::vector<datum_reference> & references, std::vector<datum_definition> & cache);
 
 };
 
-#endif /* LEGO_ATOM_HPP_ */
+#endif /* LEGO_DATUM_HPP_ */

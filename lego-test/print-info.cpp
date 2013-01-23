@@ -9,7 +9,7 @@
 #include <fstream>
 #include <vector>
 
-#include <lego/atom.hpp>
+#include <lego/datum.hpp>
 #include <lego/map.hpp>
 #include <lego/mob.hpp>
 #include <lego/string.hpp>
@@ -42,8 +42,8 @@ void print_info(char * name) {
 		lego::read_map(stream, map_size, map_references);
 	}
 	lego::initial_string_cache string_cache(stream);
-	std::vector<lego::atom_reference> atom_references;
-	lego::read_atom_references(stream, atom_references);
+	std::vector<lego::datum_reference> datum_references;
+	lego::read_datum_references(stream, datum_references);
 	std::vector<lego::mob_reference> mob_references;
 	lego::read_mob_references(stream, mob_references);
 	stream >> string_cache;
@@ -60,7 +60,7 @@ void print_info(char * name) {
 	std::cout << "Y = " << map_size.y << std::endl;
 	std::cout << "Z = " << map_size.z << std::endl;
 	std::cout << std::endl << "Code size:" << std::endl;
-	std::cout << "Distinct atom definitions  = " << atom_references.size() << std::endl;
+	std::cout << "Distinct datum definitions = " << datum_references.size() << std::endl;
 	std::cout << "Distinct mob definitions   = " << mob_references.size() << std::endl;
 	std::cout << "Distinct names and strings = " << string_cache.values().size() << std::endl;
 }
