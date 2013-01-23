@@ -12,8 +12,6 @@
 #include <string>
 #include <vector>
 
-#define LEGO_ATOM_NONE
-
 namespace lego {
 
 struct atom_reference
@@ -47,16 +45,19 @@ public:
 	virtual ~atom_definition() {};
 	std::string *       description();
 	std::string *		name();
+	std::string *		icon_state();
 	atom_definition * 	parent();
 	std::string &		type_name();
 	std::string &		type_path();
 	void				set_description(std::string * desc);
+	void				set_icon_state(std::string * state);
 	void				set_name(std::string * name);
 	void 				set_parent(atom_definition * parent);
 
 private:
 	std::string 	*	__name;
 	std::string     *   __description;
+	std::string		*	__icon_state;
 	atom_definition * 	__parent;
 	std::string			__type_name;
 	std::string			__type_path;
