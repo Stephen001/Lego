@@ -59,12 +59,12 @@ public:
 	void				set_suffix(std::string * suffix);
 
 private:
-	std::string 	*	__name;
-	std::string     *   __description;
-	std::string		*	__icon_state;
+	std::string 	 *	__name;
+	std::string      *   __description;
+	std::string		 *	__icon_state;
 	datum_definition * 	__parent;
-	std::string		*	__suffix;
-	std::string		*	__text_icon;
+	std::string		 *	__suffix;
+	std::string		 *	__text_icon;
 	std::string			__type_name;
 	std::string			__type_path;
 };

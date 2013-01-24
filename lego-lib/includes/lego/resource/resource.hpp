@@ -15,22 +15,17 @@
 namespace lego
 {
 
-class resource {
-public:
-	resource() {};
-	~resource() {};
-	const std::string & get_name() const { return name; };
-	unsigned int  		get_size() const { return size; };
-	void write(std::string & directory) const;
-
-	friend std::istream & operator>>(std::istream & is, resource & ref);
-private:
-	std::string		name;
+struct resource {
+	std::string	  * name;
 	unsigned char * data;
 	unsigned int	size;
+
+	friend std::istream & operator>>(std::istream & is, resource & ref);
 };
 
 void read_resources(std::istream & is, std::vector<resource> & resources);
+
+void write_resource(resource & res, std::string & directory);
 
 };
 

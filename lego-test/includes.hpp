@@ -12,5 +12,7 @@ void print_info(char * name);
 
 void print_graph(char * name);
 
+void write_resources(char * name, char * directory);
+
 
 #endif /* INCLUDES_HPP_ */

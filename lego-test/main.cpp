@@ -15,7 +15,10 @@ int main(int argc, char ** argv) {
 		print_info(argv[2]);
 	}
 	if (command.compare("print-graph") == 0) {
-			print_graph(argv[2]);
-		}
+		print_graph(argv[2]);
+	}
+	if (command.compare("write-resources") == 0) {
+		write_resources(argv[2], argv[3]);
+	}
 	return 0;
 }
