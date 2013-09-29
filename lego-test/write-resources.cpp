@@ -21,7 +21,11 @@ void write_resources(char * name, char * directory) {
 	lego::read_resources(stream, resources);
 	for (std::vector<lego::resource>::iterator it = resources.begin(); it != resources.end(); it++) {
 		lego::resource & res = (*it);
-		std::cout << "Found " << *(res.name) << " size " << res.size << std::endl;
-		lego::write_resource(res, dir);
+		if (res.active) {
+			std::cout << "Found " << *(res.name) << " size " << res.size << std::endl;
+			lego::write_resource(res, dir);
+		} else {
+			std::cout << "Found inactive resource" << std::endl;
+		}
 	}
 }

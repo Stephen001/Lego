@@ -17,8 +17,9 @@ namespace lego
 
 struct resource {
 	std::string	  * name;
-	unsigned char * data;
+	char 		  * data;
 	unsigned int	size;
+	bool			active;
 
 	friend std::istream & operator>>(std::istream & is, resource & ref);
 };
