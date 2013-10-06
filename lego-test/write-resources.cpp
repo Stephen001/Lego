@@ -25,7 +25,7 @@ void write_resources(char * name, char * directory) {
 			std::cout << "Found " << *(res.name) << " size " << res.size << std::endl;
 			lego::write_resource(res, dir);
 		} else {
-			std::cout << "Found inactive resource" << std::endl;
+			std::cout << "Found inactive resource of size " << res.size << std::endl;
 		}
 	}
 }

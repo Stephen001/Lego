@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <cstring>
 #include <iterator>
+#include <iostream>
 #include <fstream>
 #include <vector>
 
@@ -82,6 +83,10 @@ std::istream & operator>>(std::istream & is, resource & ref) {
 			is.read(ref.data, size);
 		}
 		ref.size = size;
+		int skip = blockSize - (17 + ref.name->size() + ref.size);
+		if (skip > 0) {
+			is.ignore(skip);
+		}
 	} else {
 		ref.active = false;
 		ref.size = blockSize;
